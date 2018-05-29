@@ -1,16 +1,5 @@
 {% include "registration/base.html" %}
-<!-- 
-     <!DOCTYPE html>
-     <html>
-     <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <title>G33KC0DE</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-     </head> -->
   <body>
-    <section class="section">
       <div class="container">
 	<h1 class="title">Register</h1>
 	
@@ -26,20 +15,14 @@
 	    <label class="label">First Name</label>
 	    {{ form.first_name }}
 	    <small style="color: grey">{{ form.first_name.help_text }}</small>
-	  </div>
-	  
-	  <div class="field">
+	    
 	    <label class="label">Last Name</label>
 	    {{ form.last_name }}
 	    <small style="color: grey">{{ form.last_name.help_text }}</small>
-	  </div>
 
-	  
-	  <div class="field">
    	    <label class="label">Birth Date</label>
 	    {{ form.birth_date }}
 	    <small style="color: grey">{{ form.birth_date.help_text }}</small>
-
 	  </div>
 	  
 	  
@@ -47,26 +30,21 @@
 	    <label class="label">Email</label>
 	    {{ form.email }}
 	    <small style="color: grey">{{ form.email.help_text }}</small>
-	  </div>
-	  
-	  <div class="field">
+	    
 	    <label class="label">Username</label>
 	    {{ form.username }}
 	    <small style="color: grey">{{ form.username.help_text }}</small>
-
 	  </div>
-
- 	  <div class="field">
+	  
+	  <div class="field">
 	    <label class="label">Password</label>
 	    {{ form.password1 }}
-	  </div>
 
-	  <div class="field">
 	    <label class="label">Confirm Password</label>
 	    {{ form.password2 }}
 	    <small style="color: grey">{{ form.password2.help_text }}</small>
 	  </div>
-
+  
 	  <button type="submit" value="Register" class="button is-primary">Submit</button>
 	</form>
       </div>

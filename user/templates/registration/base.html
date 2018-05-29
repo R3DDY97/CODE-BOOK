@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,21 +8,25 @@
     <title>G33KC0DE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <style>    
-    .Site {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    }
-
-    .Site-content {
-    flex: 1;
-    }
-
-  
-    body { margin: 0; }
-    header { background-color: #FDD; }
-    main { background-color: #DFD; }
-      footer { background-color: #DDF; }
-    </style>
   </head>
+
+
+  <body>
+      <div class="container">    
+	<nav class="navbar" role="navigation" aria-label="main navigation">
+	  <div class="navbar-brand">
+	    <a class="navbar-item" href="{% url 'index' %}"><p>GEEK CODE </p>
+	      <figure class="image is-576x480">
+		<img src="{% static 'user/pics/code.png' %}" alt="">
+	      </figure>
+
+	    </a>
+	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	    </a>
+	  </div>
+	</nav>
+      </div>
+
