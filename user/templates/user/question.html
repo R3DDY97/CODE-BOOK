@@ -1,0 +1,25 @@
+{% include 'registration/base.html' %}
+
+
+<div class="container">
+  <form method="post" action="{% url 'question' %}">
+    {% csrf_token %}
+
+    <label class="label">Choose Language</label>
+    <div class="field control select is-primary">
+      {{form.language}}
+    </div>
+    
+    <div class="field control">
+      <label class="label">Question</label>
+      {{ form.question  }}
+    </div>
+    
+    <div class="field control">
+      <label class="label">Description</label>
+      {{ form.description }}
+    </div>
+
+    <input type="submit" value="Submit" class="button is-primary"/>
+  </form>
+</div>

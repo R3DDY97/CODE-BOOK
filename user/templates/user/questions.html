@@ -1,0 +1,21 @@
+{% include 'registration/base.html' %}
+
+
+{% for qtn in qtns %}
+
+  <section class="section">
+    <div class="container">
+      {{ qtn.id }}
+      <a href = "{% url 'index' %}">
+	<h1 class="title">{{ qtn.language }} | {{ qtn.question }}</h1>
+      </a>
+      <h2 class="subtitle">
+	{{ qtn.description }}
+	{{ qtn.user }}
+	{{ qtn.date_added }}
+      </h2>
+    </div>
+  </section>
+</body>
+
+{% endfor %}
