@@ -37,8 +37,7 @@ class QuestionForm(forms.ModelForm):
                 "placeholder": "Describe about your question",
                 "rows": "5"}
 
-    description = forms.CharField(label="Describe about question",
-                                  widget=forms.Textarea(attrs=descript),
+    description = forms.CharField(widget=forms.Textarea(attrs=descript),
                                   max_length=1000, required=True)
 
     QTN_LANGUAGE = [

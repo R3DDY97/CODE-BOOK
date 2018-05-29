@@ -3,19 +3,20 @@
 
 {% for qtn in qtns %}
 
-  <section class="section">
-    <div class="container">
-      {{ qtn.id }}
-      <a href = "{% url 'index' %}">
-	<h1 class="title">{{ qtn.language }} | {{ qtn.question }}</h1>
-      </a>
-      <h2 class="subtitle">
-	{{ qtn.description }}
-	{{ qtn.user }}
-	{{ qtn.date_added }}
-      </h2>
+<div class="container card card-content">
+  <div class="content">
+    <p></p>
+    <p>{{ qtn.language }} | {{ qtn.user }} | {{ qtn.date_added }}</p>
+    <a href = "{% url 'answer' %}">
+      <p class="title is-5">{{ qtn.id }}. {{ qtn.question }}</p>
+      <hr>
+    </a>
+    <div class="content is-medium">{{ qtn.description }}
     </div>
-  </section>
-</body>
+  </div>
+</div>
+
 
 {% endfor %}
+
+

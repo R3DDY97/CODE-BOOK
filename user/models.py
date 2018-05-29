@@ -38,3 +38,6 @@ class Question(models.Model):
 class Answer(models.Model):
     date_added = models.DateTimeField(default=timezone.now)
     answer = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return "<ID {}>".format(self.id)

@@ -1,4 +1,5 @@
 
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as user_login
 # from django.contrib.auth.forms import UserCreationForm
@@ -9,26 +10,6 @@ from .forms import RegisterForm, QuestionForm, AnswerForm
 
 def index(request):
     return render(request, "user/index.html")
-
-
-def login(request):
-    return render(request, "registration/login.html")
-
-
-def logout(request):
-    return render(request, "registration/logout.html")
-
-
-def questions(request):
-    qtns = Question.objects.order_by("-date_added")
-    context = {"qtns": qtns}
-    return render(request, "user/questions.html", context)
-
-
-def qanswer(request):
-    answers = Answer.objects.order_by("-date_added")
-    context = {"answers": answers}
-    return render(request, "user/qanswer.html", context)
 
 
 def register(request):
@@ -47,6 +28,26 @@ def register(request):
     return render(request, 'registration/register.html', context)
 
 
+def login(request):
+    return render(request, "registration/login.html")
+
+
+def logout(request):
+    return render(request, "registration/logout.html")
+
+
+def questions(request):
+    qtns = Question.objects.order_by("-date_added")
+    context = {"qtns": qtns}
+    return render(request, "user/questions.html", context)
+
+
+# def answers(request):
+#     ans = Answer.objects.order_by("-date_added")
+#     context = {"answers": ans}
+#     return render(request, "user/answer.html", context)
+
+
 def question(request):
     form = QuestionForm(request.POST)
     print(form.is_valid())
@@ -54,7 +55,7 @@ def question(request):
         questn = form.save(commit=False)
         questn.user = request.user
         questn.save()
-        return redirect("index")
+        return redirect("questions")
     else:
         form = QuestionForm()
     context = {'form': form}
@@ -62,17 +63,18 @@ def question(request):
 
 
 def answer(request):
-    form = QuestionForm(request.POST)
+    form = AnswerForm(request.POST)
     print(form.is_valid())
     if request.method == 'POST' and form.is_valid():
-        questn = form.save(commit=False)
-        questn.user = request.user
-        questn.save()
-        return redirect("index")
+        ans = form.save(commit=False)
+        ans.user = request.user
+        ans.save()
+        return redirect("answer")
     else:
-        form = QuestionForm()
-    context = {'form': form}
-    return render(request, 'user/question.html', context)
+        ans = Answer.objects.order_by("-date_added")
+        form = AnswerForm()
+        context = {"answered": ans, "form": form}
+    return render(request, 'user/answer.html', context)
 
 
 # def register(request):
