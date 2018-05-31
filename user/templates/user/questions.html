@@ -5,11 +5,11 @@
 
 <div class="container card card-content">
   <div class="content">
-    <a href = "{% url 'answer' %}">
+    <a href = "{% url 'answer' qtn.id %}">
       <p class="title is-5">{{ qtn.id }}. {{ qtn.question }}</p>
     </a>
     <br>
-    <span><small> by</small>  {{ qtn.user }} on {{ qtn.date_added }} </span>
+    <span><small> by</small>  {{ user }} on {{ qtn.date_added }} </span>
     <span class="tag is-light">{{ qtn.language }}</span>
     <hr>
     <div class="content is-medium">{{ qtn.description }}

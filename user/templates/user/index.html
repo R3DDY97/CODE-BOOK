@@ -1,60 +1,35 @@
 {% include 'registration/base.html' %}
 
 <div class ="container">
-  {% if user.is_authenticated %}
-  <p class="subtitle is-6">{{ user.username }} </p>
-  <div class="field is-grouped is-grouped-right">
-    <a type="button" class=" control button is-primary" href="{% url 'logout' %}">Logout</a>
-  </div>
 
+  {% if user.is_authenticated %}
 
   <nav class="navbar is-transparent">
     <div id="navbarExampleTransparentExample" class="navbar-menu "navbar-start"">
-      <a class="navbar-item" href="{% url 'questions' %}">
-	Questions
-      </a>
+      
       <a class="navbar-item" href="{% url 'question' %}">
 	Ask Question
       </a>
-      <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-	Columns
+      
+      <a class="navbar-item" href="{% url 'questions' %}">
+	Questions
       </a>
-      <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-	Layout
-      </a>
-      <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-	Form
-      </a>
-      <hr class="navbar-divider">
-      <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-	Elements
-      </a>
-      <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-	Components
-      </a>
+      
     </div>
   </nav>
+</div>
 
-</div>
-{% else %}
-
-<div class="field is-grouped is-grouped-right">
-  <a type="button" class=" control button is-primary" href="{% url 'login' %}">login</a>
-  <a type="button" class=" control button is-primary" href="{% url 'register' %}">Register</a>
-</div>
-</div>
+{% endif %}
 
 
 <section class="section">
   <div class="container content">
     <h1>About</h1>
-    <p>This site is to share patterns and useful tips of programing languages. Ask and answer any questions related</p>
+    <p>This site is to Ask and answer any questions related to programing languages.</p>
+    <p>share gists and useful tips.</p>
     <h2>Usage</h2>
-    <p>Can use it as guest or login user</p>
+    <p>Need to login to access posts</p>
   </div>
 </section>
-
-{% endif %}
-
   </body>
 </html>

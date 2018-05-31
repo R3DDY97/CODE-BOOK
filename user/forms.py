@@ -34,16 +34,16 @@ class QuestionForm(forms.ModelForm):
                                widget=forms.TextInput(attrs=qtn))
 
     descript = {"class": "textarea is-primary",
-                "placeholder": "Describe about your question",
+                "placeholder": "Describe in detail about it",
                 "rows": "5"}
 
     description = forms.CharField(widget=forms.Textarea(attrs=descript),
                                   max_length=1000, required=True)
 
     QTN_LANGUAGE = [
-        ("py", "Python"),
-        ("js", "Java script"),
-        ("sh", "Shell"),
+        ("python", "Python"),
+        ("javascript", "Java script"),
+        ("shell", "Shell"),
     ]
 
     language = forms.ChoiceField(required=True,
@@ -67,3 +67,34 @@ class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         fields = ["answer"]
+
+
+class GistForm(forms.ModelForm):
+
+    name_attr = {"class": "input is-large is-primary",
+                 "placeholder": "Name your gist code",
+                 }
+
+    gist_name = forms.CharField(max_length=500, required=True,
+                                widget=forms.TextInput(attrs=name_attr))
+
+    code_attr = {"class": "textarea is-primary",
+                 "placeholder": "Describe in detail about it",
+                 "rows": "5"}
+
+    gist_code = forms.CharField(widget=forms.Textarea(attrs=code_attr),
+                                max_length=1000, required=True)
+
+    GIST_LANGUAGE = [
+        ("python", "Python"),
+        ("javascript", "Java script"),
+        ("shell", "Shell"),
+    ]
+
+    language = forms.ChoiceField(required=True,
+                                 widget=forms.Select,
+                                 choices=GIST_LANGUAGE)
+
+    class Meta:
+        model = Question
+        fields = ["gist_name", "gist_code", "language"]

@@ -1,25 +1,29 @@
 {% include 'registration/base.html' %}
 
 
-<div class="container "><br><hr></div>
-
+<div class="container">
+  {{ qtn.question }}
+</div>
+<br><hr>
 
 {% for ans in answered %}
 
 <div class="container">
   <div class="content">
-    <p>{{ ans.answer }}</p>
-    <br><hr>
+    <p>{{ ans.answer|linebreaksbr}}</p>
+    <hr>
   </div>
 </div>
 
 {% endfor %}
 
+
+
 <br><hr>
 
 
 <div class="container">
-  <form method="post" action="{% url 'answer' %}">
+  <form method="post" action="{% url 'answer' qtn_id=qtn.id %}">
     {% csrf_token %}
     <div class="field control">
       <label class="label">Answer</label>

@@ -12,6 +12,20 @@ def index(request):
     return render(request, "user/index.html")
 
 
+def login(request):
+    return render(request, "registration/login.html")
+
+
+def logout(request):
+    return render(request, "registration/logout.html")
+
+
+def questions(request):
+    qtns = Question.objects.order_by("-date_added")
+    context = {"qtns": qtns}
+    return render(request, "user/questions.html", context)
+
+
 def register(request):
     form = RegisterForm(request.POST)
     print(form.is_valid())
@@ -28,20 +42,6 @@ def register(request):
     return render(request, 'registration/register.html', context)
 
 
-def login(request):
-    return render(request, "registration/login.html")
-
-
-def logout(request):
-    return render(request, "registration/logout.html")
-
-
-def questions(request):
-    qtns = Question.objects.order_by("-date_added")
-    context = {"qtns": qtns}
-    return render(request, "user/questions.html", context)
-
-
 # def gists(request):
 #     gists_posted = Gist.objects.order_by("-date_added")
 #     context = {"gists_posted": gists_posted}
@@ -49,7 +49,21 @@ def questions(request):
 
 
 def profile(request):
-    return render(request, "user/profile.html")
+    user_qtns = Question.objects.filter(login_user=request.user)
+    context = {"user_qtns": user_qtns}
+    return render(request, "user/profile.html", context)
+
+
+def questioned(request):
+    user_qtns = Question.objects.filter(login_user=request.user)
+    context = {"user_qtns": user_qtns}
+    return render(request, "user/questioned.html", context)
+
+
+def answered(request):
+    user_answered = Answer.objects.filter(login_user=request.user)
+    context = {"user_answered": user_answered}
+    return render(request, "user/answered.html", context)
 
 
 def question(request):
@@ -57,7 +71,7 @@ def question(request):
     print(form.is_valid())
     if request.method == 'POST' and form.is_valid():
         questn = form.save(commit=False)
-        questn.user = request.user
+        questn.login_user = request.user.username
         questn.save()
         return redirect("questions")
     else:
@@ -66,18 +80,25 @@ def question(request):
     return render(request, 'user/question.html', context)
 
 
-def answer(request):
+def answer(request, qtn_id):
     form = AnswerForm(request.POST)
     print(form.is_valid())
     if request.method == 'POST' and form.is_valid():
         ans = form.save(commit=False)
-        ans.user = request.user
+        ans.login_user = request.user.username
+        ans.qtn_id = qtn_id
         ans.save()
-        return redirect("answer")
+        return redirect("answer", qtn_id)
     else:
-        ans = Answer.objects.order_by("-date_added")
+        qtn_asked = Question.objects.get(id=qtn_id)
+        print(qtn_asked)
+        context = {"qtn": qtn_asked, "form": form}
+        try:
+            ans = list(Answer.objects.filter(qtn_id=qtn_id))
+            context.update({"answered": ans})
+        except Answer.DoesNotExist:
+            pass
         form = AnswerForm()
-        context = {"answered": ans, "form": form}
     return render(request, 'user/answer.html', context)
 
 
