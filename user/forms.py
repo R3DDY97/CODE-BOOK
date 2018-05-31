@@ -7,16 +7,23 @@ from .models import Question, Answer
 
 
 class RegisterForm(UserCreationForm):
+
+    fname_attr = {"placeholder": "First name"}
+    lname_attr = {"placeholder": "Last name"}
+    date_attr = {"placeholder": "YYYY-MM-DD"}
+    email_attr = {"placeholder": "Need valid email-id"}
+
     first_name = forms.CharField(max_length=30, required=True,
-                                 help_text='Enter your first name.')
+                                 widget=forms.TextInput(attrs=fname_attr))
+
     last_name = forms.CharField(max_length=30, required=True,
-                                help_text='Enter your last name.')
+                                widget=forms.TextInput(attrs=lname_attr))
 
     birth_date = forms.DateField(required=True,
-                                 help_text='Required. Format: YYYY-MM-DD')
+                                 widget=forms.TextInput(attrs=date_attr))
 
     email = forms.EmailField(max_length=254, required=True,
-                             help_text="Required. Needs valid email id")
+                             widget=forms.TextInput(attrs=email_attr))
 
     class Meta:
         model = User
@@ -26,12 +33,12 @@ class RegisterForm(UserCreationForm):
 
 class QuestionForm(forms.ModelForm):
 
-    qtn = {"class": "input is-large is-primary",
-                    "placeholder": "Enter your question",
-           }
+    qtn_attr = {"class": "input is-medium is-primary",
+                "placeholder": "Enter your question",
+                }
 
     question = forms.CharField(max_length=500, required=True,
-                               widget=forms.TextInput(attrs=qtn))
+                               widget=forms.TextInput(attrs=qtn_attr))
 
     descript = {"class": "textarea is-primary",
                 "placeholder": "Describe in detail about it",
@@ -57,12 +64,12 @@ class QuestionForm(forms.ModelForm):
 
 class AnswerForm(forms.ModelForm):
 
-    ans = {"class": "textarea is-primary",
-           "placeholder": "Enter answer",
-           "rows": "5"}
+    ans_attr = {"class": "textarea is-primary",
+                "placeholder": "Enter answer",
+                "rows": "5"}
 
     answer = forms.CharField(required=True,
-                             widget=forms.Textarea(attrs=ans))
+                             widget=forms.Textarea(attrs=ans_attr))
 
     class Meta:
         model = Answer
