@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = ["192.168.0.119",
                  "127.0.0.1",
                  "192.168.1.108",
+                 "0.0.0.0",
+                 "localhost",
                  ]
 
 
@@ -109,13 +111,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+
+TIME_ZONE = 'Asia/Kolkata'
+
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+
+USE_THOUSAND_SEPARATOR = True
 
 
 # Static files (CSS, JavaScript, Images)

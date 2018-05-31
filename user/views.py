@@ -1,8 +1,8 @@
-
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as user_login
 # from django.contrib.auth.forms import UserCreationForm
+# from django.contrib.auth.models import User
+# from django.contrib.auth import get_user_model
 
 from .models import Question, Answer
 from .forms import RegisterForm, QuestionForm, AnswerForm
@@ -42,10 +42,14 @@ def questions(request):
     return render(request, "user/questions.html", context)
 
 
-# def answers(request):
-#     ans = Answer.objects.order_by("-date_added")
-#     context = {"answers": ans}
-#     return render(request, "user/answer.html", context)
+# def gists(request):
+#     gists_posted = Gist.objects.order_by("-date_added")
+#     context = {"gists_posted": gists_posted}
+#     return render(request, "user/gists.html", context)
+
+
+def profile(request):
+    return render(request, "user/profile.html")
 
 
 def question(request):
@@ -75,6 +79,28 @@ def answer(request):
         form = AnswerForm()
         context = {"answered": ans, "form": form}
     return render(request, 'user/answer.html', context)
+
+
+# def create_gist(request):
+#     form = GistForm(request.POST)
+#     print(form.is_valid())
+#     if request.method == 'POST' and form.is_valid():
+#         gist_created = form.save(commit=False)
+#         gist_created.user = request.user
+#         gist_created.save()
+#         return redirect("gists")
+#     else:
+#         form = GistForm()
+#         context = {"form": form}
+#     return render(request, 'user/create_gist.html', context)
+
+
+# def gist_comments(request):
+#     pass
+
+
+# def snippets(request):
+#     pass
 
 
 # def register(request):
