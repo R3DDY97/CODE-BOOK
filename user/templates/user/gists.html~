@@ -1,0 +1,19 @@
+{% include 'registration/base.html' %}
+
+{% for gist_post in gists_posted %}
+
+<div class="container card card-content">
+  <div class="content">
+    <a href = "{% url 'gist_comments' %}">
+      <p class="title is-5">{{ gist_post.id }}. {{ gist_post.question }}</p>
+    </a>
+    <br>
+    <span><small> by </small>{{ gist_post.username }} on {{ gist_post.date_added }}</span>
+    <span class="tag is-light">{{ gist_post.language }}</span>
+    <hr>
+    
+    <div class="content is-medium">{{ gist_post.description }}
+    </div>
+  </div>
+</div>
+{% endfor %}

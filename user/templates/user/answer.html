@@ -1,0 +1,30 @@
+{% include 'registration/base.html' %}
+
+
+<div class="container "><br><hr></div>
+
+
+{% for ans in answered %}
+
+<div class="container">
+  <div class="content">
+    <p>{{ ans.answer }}</p>
+    <br><hr>
+  </div>
+</div>
+
+{% endfor %}
+
+<br><hr>
+
+
+<div class="container">
+  <form method="post" action="{% url 'answer' %}">
+    {% csrf_token %}
+    <div class="field control">
+      <label class="label">Answer</label>
+      {{ form }}
+    </div>
+    <input type="submit" value="Submit" class="button is-primary"/>
+  </form>
+</div>
