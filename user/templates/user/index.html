@@ -1,26 +1,5 @@
 {% include 'registration/base.html' %}
 
-<div class ="container">
-
-  {% if user.is_authenticated %}
-
-  <nav class="navbar is-transparent">
-    <div id="navbarExampleTransparentExample" class="navbar-menu "navbar-start"">
-      
-      <a class="navbar-item" href="{% url 'question' %}">
-	Ask Question
-      </a>
-      
-      <a class="navbar-item" href="{% url 'questions' %}">
-	Questions
-      </a>
-      
-    </div>
-  </nav>
-</div>
-
-{% endif %}
-
 
 <section class="section">
   <div class="container content">

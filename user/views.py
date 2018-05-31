@@ -62,7 +62,10 @@ def questioned(request):
 
 def answered(request):
     user_answered = Answer.objects.filter(login_user=request.user)
-    context = {"user_answered": user_answered}
+
+    qtns_answered = [(ans, Question.objects.get(id=ans.qtn_id))
+                     for ans in user_answered]
+    context = {"qtns_answered": qtns_answered}
     return render(request, "user/answered.html", context)
 
 
@@ -91,7 +94,6 @@ def answer(request, qtn_id):
         return redirect("answer", qtn_id)
     else:
         qtn_asked = Question.objects.get(id=qtn_id)
-        print(qtn_asked)
         context = {"qtn": qtn_asked, "form": form}
         try:
             ans = list(Answer.objects.filter(qtn_id=qtn_id))

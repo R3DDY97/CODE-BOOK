@@ -1,5 +1,6 @@
 {% include 'registration/base.html' %}
 
+<div class="container content title">Questions</div>
 
 {% for qtn in qtns %}
 
@@ -9,7 +10,7 @@
       <p class="title is-5">{{ qtn.id }}. {{ qtn.question }}</p>
     </a>
     <br>
-    <span><small> by</small>  {{ user }} on {{ qtn.date_added }} </span>
+    <span><small> by</small>  {{ user | title }} on {{ qtn.date_added }} </span>
     <span class="tag is-light">{{ qtn.language }}</span>
     <hr>
     <div class="content is-medium">{{ qtn.description }}

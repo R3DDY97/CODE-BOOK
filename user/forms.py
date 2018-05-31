@@ -61,8 +61,8 @@ class AnswerForm(forms.ModelForm):
            "placeholder": "Enter answer",
            "rows": "5"}
 
-    answer = forms.CharField(widget=forms.Textarea(attrs=ans),
-                             required=True)
+    answer = forms.CharField(required=True,
+                             widget=forms.Textarea(attrs=ans))
 
     class Meta:
         model = Answer
