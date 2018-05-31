@@ -28,16 +28,15 @@
 	</div>
       </nav>
     </div>
-   
 
+    
+    {% if user.is_authenticated %}
+    
     <div class ="container">
       <div class="field is-grouped is-grouped-right">
 	<p class="control">
-
-	  {% if user.is_authenticated %}
-	  
-	  <a class="button is-primary" href="{% url 'profile' %}"> {{ user.username }} </a>
-	  <a class="button is-primary" href="{% url 'logout' %}">Login</a>
+	  <a class="button is-primary" href="{% url 'profile' %}"> {{ user.username | upper}} </a>
+	  <a class="button is-primary" href="{% url 'logout' %}">Logout</a>
 
 	  {% else %}
 	  
@@ -49,4 +48,26 @@
 	</p>
       </div>
     </div>
+    
+
+    
+    {% if user.is_authenticated %}
+
+    <div class ="container">
+      <nav class="navbar is-transparent">
+	<div id="navbarExampleTransparentExample" class="navbar-menu navbar-start">
+
+	  <a class="navbar-item" href="{% url 'question' %}">
+	    Ask Question
+	  </a>
+	  <a class="navbar-item" href="{% url 'questions' %}">
+	    Questions
+	  </a>
+	</div>
+      </nav>
+    </div>
+
+    {% endif %}
+    
+
     
