@@ -10,6 +10,16 @@
 	  {% if form.errors %}
 	  <p> Errors in filling form try again </p>
 	  {% endif %}
+
+	  
+	  <p class="buttons">
+	    <a class="button is-medium" href="{% url 'social:begin' 'github' %}">
+	      <span class="icon is-medium">
+		<i class="fab fa-github"></i>
+	      </span>
+	      <span>GitHub</span>
+	    </a>
+	  </p> 
 	  
 	  <div class="field">
 	    <label class="label">First Name</label>
