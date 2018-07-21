@@ -1,0 +1,43 @@
+{% include 'registration/base.html' %}
+
+
+<div class="container card card-content">
+  <div class="content">
+    <p class="title">Question</p>
+    <p class="title is-5"> {{ qtn.question }} </p>
+    <span><small> by</small>  {{ qtn.login_user }} on {{ qtn.date_added }} </span>
+    <span class="tag is-light">{{ qtn.language }}</span>
+    <hr>
+    <div class="content is-medium">{{ qtn.description }}
+    </div>
+  </div>
+</div>
+<br><hr>
+
+<div class="container content">
+  <p class="title">Answers</p>
+</div>
+
+{% for ans in answered %}
+
+<div class="container card card-content">
+  <div class="content">
+    <p class="title is-5"> {{ ans.answer }} </p>
+    <span><small> by</small>  {{ ans.login_user }} on {{ ans.date_added }} </span>
+  </div>
+</div>
+<br>
+
+{% endfor %}
+<br><hr>
+
+<div class="container">
+  <form method="post" action="{% url 'answer' qtn_id=qtn.id %}">
+    {% csrf_token %}
+    <div class="field control">
+      <label class="label">Your answer: </label>
+      {{ form.answer }}
+    </div>
+    <input type="submit" value="Submit" class="button is-primary"/>
+  </form>
+</div>

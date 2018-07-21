@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>G33KC0DE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+	<h1 class="title">
+	  Register
+	</h1>
+
+
+	<p class="buttons">
+	  <a class="button is-medium">
+	    <span class="icon">
+	      <i class="fab fa-github"></i>
+	    </span>
+	    <span>GitHub</span>
+	  </a>
+	</p>
+	
+
+	<div class="field">
+	  <label class="label">Name</label>
+	  <div class="control">
+	    <input class="input" type="text" placeholder="firstname lastname">
+	  </div>
+	</div>
+
+	<div class="field">
+	  <label class="label">Username</label>
+	  <div class="control has-icons-left has-icons-right">
+	    <input class="input" type="text" placeholder="unique name" value="">
+	    <!-- <input class="input is-success" type="text" placeholder="Text input" value=""> -->
+	    <span class="icon is-small is-left">
+	      <i class="fas fa-user"></i>
+	      <!-- </span>
+		   <span class="icon is-small is-right">
+		   <i class="fas fa-check"></i> -->
+	    </span>
+	  </div>
+	  <!-- <p class="help is-success">This username is available</p> -->
+	</div>
+
+	<div class="field">
+	  <label class="label">Email</label>
+	  <div class="control has-icons-left has-icons-right">
+	    <input class="input" type="email" placeholder="e.g email_id@domain.com" value="">
+	    <!-- <input class="input is-danger" type="email" placeholder="Email input" value=""> -->
+	    <span class="icon is-small is-left">
+	      <i class="fas fa-envelope"></i>
+	    </span>
+	    <!-- <span class="icon is-small is-right">
+		 <i class="fas fa-exclamation-triangle"></i>
+		 </span> -->
+	  </div>
+	  <!-- <p class="help is-danger">This email is invalid</p> -->
+	</div>
+
+	<div class="field">
+	  <div class="control">
+	    <label class="checkbox">
+	      <input type="checkbox">
+	      I agree to the <a href="#">terms and conditions</a>
+	    </label>
+	  </div>
+	</div>
+
+	<div class="field is-grouped">
+	  <div class="control">
+	    <button class="button is-primary">Submit</button>
+	  </div>
+	  <div class="control">
+	    <button class="button is-light">Cancel</button>
+	  </div>
+	</div>
+  </body>
+</html>

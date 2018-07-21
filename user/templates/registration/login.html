@@ -1,0 +1,44 @@
+{% include "registration/base.html" %}
+
+     <section class="section">
+      <div class="container">
+	
+	<h1 class="title">Login</h1>
+
+	{% if form.errors %}
+	<p> Entered credentials are wrong check it again </p>
+	{% endif %}
+
+	{% if next %}
+	<p>Access  Denied. </p>
+	{% endif %}
+
+
+
+	<p class="buttons">
+	  <a class="button is-medium" href="{% url 'social:begin' 'github' %}">
+	    <span class="icon is-medium">
+	      <i class="fab fa-github"></i>
+	    </span>
+	    <span>GitHub</span>
+	  </a>
+	</p>
+	
+	<form method="post", action="{% url 'login' %}">
+	  {% csrf_token %}
+
+	  <div class="field">
+	    <label class="label">Username</label>
+	       {{ form.username }}
+	    <label class="label">Password</label>
+	    {{ form.password }}
+	  </div>
+
+	  <input type="submit" =  value="Login" class="button is-primary">
+	  <input type="hidden" name="next" value="{{ next }}">
+
+	</form>
+      </div>
+    </section>
+     </body>
+</html>

@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GEEK C0DE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'user/bottom.css' %}" >
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    
+  </head>
+
+
+  <body>
+    <div class="container">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+	<div class="navbar-brand">
+	  <a class="navbar-item" href="{% url 'index' %}"><p>GEEK CODE </p>
+	    <figure class="image is-576x480">
+	      <img src="{% static 'user/pics/code.png' %}" alt="">
+	    </figure>
+	  </a>
+
+	  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+	    <span aria-hidden="true"></span>
+	    <span aria-hidden="true"></span>
+	    <span aria-hidden="true"></span>
+	  </a>
+	</div>
+      </nav>
+    </div>
+
+    <div class ="container">
+      <div class="field is-grouped is-grouped-right">
+
+        {% if user.is_authenticated %}
+
+	<p class="control">
+	  <a class="button is-primary" href="{% url 'profile' %}"> {{ user.username | upper}} </a>
+	  <a class="button is-primary" href="{% url 'logout' %}">Logout</a>
+	</p>
+
+	{% else %}
+
+	<p class="control">
+	  <a class="button is-primary" href="{% url 'login' %}">Login</a>
+	  <a class="button is-primary" href="{% url 'register' %}">Register</a>
+	</p>
+
+	{% endif %}
+      </div>
+    </div>
+
+
+
+    {% if user.is_authenticated %}
+
+    <div class ="container">
+      <nav class="navbar is-transparent">
+	<div id="navbarExampleTransparentExample" class="navbar-menu navbar-start">
+
+	  <a class="navbar-item" href="{% url 'question' %}">
+	    Ask Question
+	  </a>
+	  <a class="navbar-item" href="{% url 'questions' %}">
+	    Questions
+	  </a>
+	</div>
+      </nav>
+    </div>
+
+    {% endif %}
+
+
+    {% block main_block %}
+    {% endblock %}
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p><strong>GEEK C0DE</strong> by <a href="https://github.com/R3DDY97/CODE-BOOK">R3DDY97</a>
+            The source code is licensed<a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+            The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{% include 'registration/base.html' %}
+
+<div class="container content title">Questions</div>
+
+{% for qtn in qtns %}
+
+<div class="container card card-content">
+  <div class="content">
+    <a href = "{% url 'answer' qtn.id %}">
+      <p class="title is-5">{{ qtn.id }}. {{ qtn.question }}</p>
+    </a>
+    <br>
+    <span><small> by</small>  {{ qtn.login_user | title }} on {{ qtn.date_added }} </span>
+    <span class="tag is-light">{{ qtn.language }}</span>
+    <hr>
+    <div class="content is-medium">{{ qtn.description }}
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+

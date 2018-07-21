@@ -1,0 +1,53 @@
+{% include "registration/base.html" %}
+  <body>
+      <div class="container">
+	<h1 class="title">Register</h1>
+	
+	<form method="post" action="{% url 'register' %}">
+	  {% csrf_token %}
+
+
+	  {% if form.errors %}
+	  <p> Errors in filling form try again </p>
+	  {% endif %}
+	  
+	  <div class="field">
+	    <label class="label">First Name</label>
+	    {{ form.first_name }}
+	    
+	    <label class="label">Last Name</label>
+	    {{ form.last_name }}
+
+   	    <label class="label">Birth Date</label>
+	    {{ form.birth_date }}
+
+	  </div>
+	  
+	  
+	  <div class="field">
+	    <label class="label">Email</label>
+	    {{ form.email }}
+
+	    
+	    <label class="label">Username</label>
+	    {{ form.username }}
+	    <small style="color: grey">{{ form.username.help_text }}</small>
+	  </div>
+	  
+	  <div class="field">
+	    <label class="label">Password</label>
+	    {{ form.password1 }}
+
+	    <label class="label">Confirm Password</label>
+	    {{ form.password2 }}
+	    <small style="color: grey">{{ form.password2.help_text }}</small>
+	  </div>
+  
+	  <button type="submit" value="Register" class="button is-primary">Submit</button>
+	</form>
+      </div>
+  </body>
+</html>
+
+
+
